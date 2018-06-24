@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 // configure app
 const app = express();
 app.set('port', process.env.PORT || 5000);
+// routing for api
 app.use('/api/boards', require('./routes/board'));
 
 
@@ -21,17 +22,3 @@ db.on('open', () => {
         console.log("Server started on port " + app.get('port'));
     });
 });
-
-
-
-
-
-
-
-// GETS
-app.get('/api/boards', (req, res) => {
-    res.send("/api/boards");
-});
-
-
-
