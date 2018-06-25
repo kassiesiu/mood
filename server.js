@@ -12,6 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // routing for api
 app.use('/api/boards', require('./routes/board'));
+app.use('/api/links', require('./routes/link'));
 
 
 

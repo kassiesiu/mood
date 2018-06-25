@@ -51,16 +51,14 @@ class CreateForm extends Component {
     }
 
     handleSubmit(e) {
-        // const item = {
-        //     link: this.state.link,
-        //     desc: this.state.desc,
-        //     board: this.state.board
-        // }
-
-        axios.post('/api/boards', {boardName: this.state.boardName}).then( res => {
-            console.log("res.data");
-        }).catch( err => {
-            console.log("error");
+        axios.post('/api/links', {
+            link: this.state.link,
+            desc: this.state.desc,
+            boardName: this.state.boardName
+        }).then((res) => {
+            window.location = "/board/" + this.state.boardName;
+        }).catch( (err) => {
+            // redirect to 404
         })
     }
 

@@ -9,7 +9,7 @@ class App extends Component {
 
         <Container>
           <Nav />
-          <Display url = "boards" showBoard />
+          <Display url = "boards" showBoard/>
         </Container>
         
     );
