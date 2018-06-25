@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react';
 import Nav from '../Nav/Nav';
+import Display from '../Display/Display';
 
 class App extends Component {
   render() {
@@ -8,8 +9,9 @@ class App extends Component {
 
         <Container>
           <Nav />
-          Hello
+          <Display url = "boards" showBoard />
         </Container>
+        
     );
   }
 }
