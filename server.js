@@ -2,6 +2,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 
 
@@ -9,6 +10,7 @@ const bodyParser = require('body-parser');
 const app = express();
 app.set('port', process.env.PORT || 5000);
 app.use(bodyParser.json());
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 // routing for api
 app.use('/api/boards', require('./routes/board'));
