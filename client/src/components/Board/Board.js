@@ -19,7 +19,7 @@ class Board extends Component {
             <Nav />
             <h1>{this.state.boardName}</h1>
 
-            <Display url = { "/links/board/" + this.state.boardName } showDesc />
+            <Display url = { "/links/board/" + this.state.boardName } showTitle showDesc showImg showEdit />
 
             </Container>
             

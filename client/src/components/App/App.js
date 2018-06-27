@@ -9,6 +9,7 @@ class App extends Component {
 
         <Container>
           <Nav />
+          <h1>Boards</h1>
           <Display url = "boards" showBoard/>
         </Container>
         

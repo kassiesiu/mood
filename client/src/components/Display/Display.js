@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { Grid, Card } from 'semantic-ui-react';
+import { Card } from 'semantic-ui-react';
 import axios from 'axios';
 import './Display.css';
+import DisplayModal from './DisplayModal';
+import DisplayCard from './DisplayCard'
 
 class Display extends Component {
 
     constructor() {
         super();
-        this.server = 
         this.state = {
             items: []
         };
@@ -23,26 +24,13 @@ class Display extends Component {
     render() {
 
         return (
-            <Grid container columns = {3}>
+            <Card.Group itemsPerRow = {4}>
 
             {this.state.items.map(item =>
-            
-                <Grid.Column key = { item._id } className = "square">
-                <Card>
-                    <Card.Content>
-                        <Card.Header>
-                        
-                        { this.props.showBoard ? <a href = {'/board/' + item.boardName}>{item.boardName}</a> : ""}
-                        { this.props.showDesc ? <a href = {item.link} > {item.desc} </a> : ""}
-                        {/* { this.props.showDescription ? item.desc : ""} */}
-                        </Card.Header>
-                    </Card.Content>
-                </Card>
-                </Grid.Column>
-            
+                this.props.showBoard ? <DisplayCard {...this.props} item = { item } /> : <DisplayModal {...this.props} item = {item} />       
             )}
                 
-            </Grid>
+            </Card.Group>
         );
     }
 

@@ -42,7 +42,7 @@ class CreateForm extends Component {
         this.setState({ currentValue: value, boardName: value }
     )
     
-    handleInputChange (e) {
+    handleInputChange(e) {
         const target = e.target;
         const value = target.value;
         const name = target.name;

@@ -17,29 +17,15 @@ router.get('/', (req, res, next) => {
 
 // READ SPECIFIC BOARD
 router.get('/board/:boardName', (req, res, next) => {
-    // res.send(req.params.boardName);
     Link.find({ boardName: req.params.boardName }, (err, result) => {
         if (err) return next(err);
         res.json(result);
     });
 })
 
-router.get('/test', (req, res, next) => {
-
-
-    const targetUrl = 'https://www.youtube.com/watch?v=kEKZD4KO-9o'
-
-    res.send(targetUrl);
-    ;(async () => {
-    const {body: html, url} = await got(targetUrl)
-    const metadata = await metascraper({html, url})
-    console.log(metadata)
-    })()
-
-})
-
 // CREATE
 router.post('/', (req, res) => {
+    // async to get meta data
     ;(async () => {
         const {body: html, url} = await got(req.body.link)
         const metadata = await metascraper({html, url})
@@ -67,17 +53,6 @@ router.post('/', (req, res) => {
             console.log("Failed to save to database");
         });
     })()
-
-    // var newLink = new Link({
-    //     link: req.body.link,
-    //     desc: req.body.desc,
-    //     boardName: req.body.boardName,
-    //     meta: metadata
-    // });
-
-    // console.log(newLink);
-    
-
     
 });
 
