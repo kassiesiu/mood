@@ -24,7 +24,7 @@ class Display extends Component {
     render() {
 
         return (
-            <Card.Group itemsPerRow = {4}>
+            <Card.Group itemsPerRow = {4} className = "grid">
 
             {this.state.items.map(item =>
                 this.props.showBoard ? <DisplayCard {...this.props} item = { item } /> : <DisplayModal {...this.props} item = {item} />       

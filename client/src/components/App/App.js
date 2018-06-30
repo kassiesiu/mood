@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container } from 'semantic-ui-react';
+import { Container, Header } from 'semantic-ui-react';
 import Nav from '../Nav/Nav';
 import Display from '../Display/Display';
 
@@ -9,7 +9,7 @@ class App extends Component {
 
         <Container>
           <Nav />
-          <h1>Boards</h1>
+          <Header as='h1' textAlign='center'>Boards</Header>
           <Display url = "boards" showBoard/>
         </Container>
         

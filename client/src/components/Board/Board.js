@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container } from 'semantic-ui-react';
+import { Container, Header } from 'semantic-ui-react';
 import Nav from '../Nav/Nav';
 import Display from '../Display/Display'
 
@@ -17,7 +17,7 @@ class Board extends Component {
 
             <Container>
             <Nav />
-            <h1>{this.state.boardName}</h1>
+            <Header dividing as='h1'>{this.state.boardName}</Header>
 
             <Display url = { "/links/board/" + this.state.boardName } showTitle showDesc showImg showEdit />
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Modal, Image, Card } from 'semantic-ui-react';
+import { Header, Modal, Image, Card } from 'semantic-ui-react';
 import DisplayCard from './DisplayCard';
+import './Display.css';
 
 class DispalyModal extends Component {
     
@@ -27,15 +28,14 @@ class DispalyModal extends Component {
                     // </Container>
 
                 }
-                size = "small"
             >
 
 
                 <Modal.Header> {this.props.item.meta.title} </Modal.Header> 
-                <Modal.Content image>
-                    <Image wrapped size='medium' src={this.props.item.meta.image} />
+                <Modal.Content className = "img" >
+                    <Image size='medium' src={this.props.item.meta.image}/>
                     <Modal.Description>
-                        {this.props.item.desc}
+                        <b>Description: </b>{this.props.item.desc}
                     </Modal.Description>
                 </Modal.Content>
             </Modal>
