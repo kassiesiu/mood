@@ -57,8 +57,8 @@ class CreateForm extends Component {
             boardName: this.state.boardName
         }).then((res) => {
             window.location = "/board/" + this.state.boardName;
-        }).catch( (err) => {
-            // redirect to 404
+        }).catch((err) => {
+            console.log('Error');
         })
     }
 
@@ -73,11 +73,12 @@ class CreateForm extends Component {
                     label = 'Link'
                     name = "link"
                     onChange = {this.handleInputChange}
+                    required
                     />
                 </Form.Field>
 
                 <Form.Field>
-                    <Form.Input
+                    <Form.TextArea
                     label = 'Description'
                     name = "desc"
                     onChange = {this.handleInputChange}
@@ -89,7 +90,7 @@ class CreateForm extends Component {
                     label = 'Board'
                     name = "boardName"
                     options = {this.state.options}
-                    placeholder='Choose Language'
+                    placeholder='Choose Board'
                     search
                     selection
                     fluid
@@ -97,10 +98,11 @@ class CreateForm extends Component {
                     value = {currentValue}
                     onAddItem = {this.handleAddition}
                     onChange = {this.handleDropdownChange}
+                    required
                     />
                 </Form.Field>
 
-                <Form.Button>Submit</Form.Button>
+                <Form.Button basic>Submit</Form.Button>
 
 
             </Form>

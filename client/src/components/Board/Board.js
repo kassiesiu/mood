@@ -3,13 +3,10 @@ import { Container, Header } from 'semantic-ui-react';
 import Nav from '../Nav/Nav';
 import Display from '../Display/Display'
 
-class Board extends Component {
+export default class Board extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            boardName: props.match.params.boardName
-        }
+    state = {
+        boardName: this.props.match.params.boardName
     }
 
     render() {
@@ -17,14 +14,12 @@ class Board extends Component {
 
             <Container>
             <Nav />
-            <Header dividing as='h1'>{this.state.boardName}</Header>
+                <Header dividing as='h1'>{this.state.boardName}</Header>
 
-            <Display url = { "/links/board/" + this.state.boardName } showTitle showDesc showImg showEdit />
+                <Display url = { "/links/board/" + this.state.boardName } showTitle showDesc showImg showEdit />
 
             </Container>
             
         );
     }
 }
-
-export default Board;

@@ -23,37 +23,60 @@ router.get('/board/:boardName', (req, res, next) => {
     });
 })
 
+// READ SPECIFIC ITEM
+router.get('/:id', (req, res, next) => {
+    Link.findById(req.params.id, (err, result) => {
+        if (err) res.send("None");
+        res.json(result);
+    });
+})
+
+
+// DELETE
+router.delete('/:id', (req, res) => {
+    Link.findByIdAndRemove(req.params.id)
+        .then((result) => {
+            console.log("Successfully deleted item.");
+        })
+        .catch((err) => {
+            console.log("Failed to delete item.")
+        });
+});
+
+
 // CREATE
 router.post('/', (req, res) => {
     // async to get meta data
     ;(async () => {
-        const {body: html, url} = await got(req.body.link)
-        const metadata = await metascraper({html, url})
-        var newLink = new Link({
-            link: req.body.link,
-            desc: req.body.desc,
-            boardName: req.body.boardName,
-            meta: metadata
-        });
+        try{
+            const {body: html, url} = await got(req.body.link)
+            const metadata = await metascraper({html, url})
+            var newLink = new Link({
+                link: req.body.link,
+                desc: req.body.desc,
+                boardName: req.body.boardName,
+                meta: metadata
+            });
 
-        // if this is a new board
-        Board.findOne({ boardName: req.body.boardName }, (err, docs) => {
-            if (!docs) { 
-                var newBoard = new Board({
-                    boardName: req.body.boardName
-                });
-                newBoard.save();
-            };
-        });
+            // if this is a new board
+            Board.findOne({ boardName: req.body.boardName }, (err, docs) => {
+                if (!docs) { 
+                    var newBoard = new Board({
+                        boardName: req.body.boardName
+                    });
+                    newBoard.save();
+                };
+            });
 
-        newLink.save().then(item => {
-            console.log("Saved Link");
-            res.send("");
-        }).catch(err => {
-            console.log("Failed to save to database");
-        });
+            newLink.save().then(item => {
+                console.log("Saved Link");
+            }).catch(err => {
+                console.log("Failed to save to database");
+            });
+        } catch(e) {
+            res.send(false);
+        }
     })()
-    
 });
 
 module.exports = router;

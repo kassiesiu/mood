@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 import Search from '../Search/Search'
 import './Nav.css'
+import '../CreateForm/CreateModal'
+import CreateModal from '../CreateForm/CreateModal';
 
 class Nav extends Component {
     
@@ -14,10 +16,12 @@ class Nav extends Component {
                     name = 'home'
                     as = { Link } to = '/'
                     />
-                <Menu.Item
+                {/* <Menu.Item
                     name = 'new'
                     as = { Link } to = '/new'
-                    />
+                    /> */}
+                <CreateModal />
+
                 <Menu.Menu position='right'>
                     <Menu.Item>
                         <Search />

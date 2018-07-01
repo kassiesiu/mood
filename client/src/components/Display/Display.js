@@ -3,17 +3,14 @@ import { Card } from 'semantic-ui-react';
 import axios from 'axios';
 import './Display.css';
 import DisplayModal from './DisplayModal';
-import DisplayCard from './DisplayCard'
+import DisplayCard from './DisplayCard';
+import CreateModal from '../CreateForm/CreateModal';
 
-class Display extends Component {
+export default class Display extends Component {
 
-    constructor() {
-        super();
-        this.state = {
-            items: []
-        };
-
-    }
+    state = {
+        items: []
+    };
 
     componentDidMount() {
         axios.get('/api/' + this.props.url).then(res => {
@@ -24,16 +21,19 @@ class Display extends Component {
     render() {
 
         return (
+
             <Card.Group itemsPerRow = {4} className = "grid">
 
-            {this.state.items.map(item =>
-                this.props.showBoard ? <DisplayCard {...this.props} item = { item } /> : <DisplayModal {...this.props} item = {item} />       
-            )}
+            {this.state.items.length > 0 ?
+                this.state.items.map(item =>
+                this.props.showBoard ? <DisplayCard {...this.props} item = { item } key = {item._id} /> : <DisplayModal {...this.props} item = {item} key = {item._id}  />       
+                )
+                : // else
+                <CreateModal card />
+            }
                 
             </Card.Group>
         );
     }
 
 }
-
-export default Display;
