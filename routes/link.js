@@ -43,6 +43,12 @@ router.delete('/:id', (req, res) => {
         });
 });
 
+// UPDATE
+router.put('/:id', (req, res) => {
+    Link.findByIdAndUpdate(req.params.id, {desc: req.body.desc}, (err, result) => {
+        if (err) return err;
+    })
+})
 
 // CREATE
 router.post('/', (req, res) => {

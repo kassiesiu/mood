@@ -6,7 +6,7 @@ import DisplayModal from './DisplayModal';
 import DisplayCard from './DisplayCard';
 import CreateModal from '../CreateForm/CreateModal';
 
-export default class Display extends Component {
+class Display extends Component {
 
     state = {
         items: []
@@ -24,16 +24,17 @@ export default class Display extends Component {
 
             <Card.Group itemsPerRow = {4} className = "grid">
 
-            {this.state.items.length > 0 ?
-                this.state.items.map(item =>
+            {this.state.items.map(item =>
                 this.props.showBoard ? <DisplayCard {...this.props} item = { item } key = {item._id} /> : <DisplayModal {...this.props} item = {item} key = {item._id}  />       
-                )
-                : // else
-                <CreateModal card />
-            }
+            )}
+
+
+            {this.props.showBoard ? "" : <CreateModal card />}
                 
             </Card.Group>
         );
     }
 
 }
+
+export default Display;
