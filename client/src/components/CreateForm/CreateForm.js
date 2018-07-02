@@ -10,6 +10,7 @@ class CreateForm extends Component {
             boards: [],
             options: [],
             link: '',
+            title: '',
             desc: '',
             boardName: '',
         }
@@ -53,12 +54,14 @@ class CreateForm extends Component {
     handleSubmit(e) {
         axios.post('/api/links', {
             link: this.state.link,
+            title: this.state.title,
             desc: this.state.desc,
             boardName: this.state.boardName
         }).then((res) => {
+            window.location.reload(true);
             window.location = "/board/" + this.state.boardName;
         }).catch((err) => {
-            console.log('Error');
+            console.log('Error handling submit');
         })
     }
 
@@ -70,12 +73,20 @@ class CreateForm extends Component {
             <Form onSubmit = {this.handleSubmit}>
                 <Form.Field>
                     <Form.Input
+                    label = 'Title'
+                    name = "title"
+                    onChange = {this.handleInputChange}
+                    />
+                </Form.Field>
+                <Form.Field>
+                    <Form.Input
                     label = 'Link'
                     name = "link"
                     onChange = {this.handleInputChange}
                     required
                     />
                 </Form.Field>
+
 
                 <Form.Field>
                     <Form.TextArea

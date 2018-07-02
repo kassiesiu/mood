@@ -10,8 +10,20 @@
     height: 100% !important;
 }
 
-.grid {
+.gridMargin {
     margin-top: 20px !important;
+    flex: auto;
+    flex-wrap: wrap;
+}
+
+/* .masonry { */
+    /* column-count: 3 !important;
+    display: block;
+} */
+
+.masonry-brick {
+    flex: auto !important;
+    height: auto !important;
 }
 
 .imageCaption {
@@ -24,20 +36,49 @@
     width: 100% !important;
 }
 
-/* .desc:hover {
-    border: black 1px solid;
-} */
-
 .ico {
     float: right !important;
-    /* margin-top: 5px !important; */
+    margin-left: 10px;
+    margin-top: 5px !important;
 }
 
 .addNewIcon {
-    height: 200px !important;
+    height: 100px !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
     text-align: center !important;
     width: 100% !important;
+}
+
+.noVerticalMargins {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.subheading {
+    color: #b5b5b5;
+    font-size: .8em;
+    margin-bottom: 15px !important;
+}
+
+.wrap {
+    white-space: pre-wrap;      /* CSS3 */   
+    white-space: -moz-pre-wrap; /* Firefox */    
+    white-space: -pre-wrap;     /* Opera <7 */   
+    white-space: -o-pre-wrap;   /* Opera 7 */    
+    word-wrap: break-word;      /* IE */
+}
+
+.cardContainer {
+    /* clip: rect(200px,200px,200px,200px); */
+    height: 100% !important;
+}
+
+.aspectRatio {
+    /* -o-object-fit: contain;
+    object-fit: contain; */
+    width: 100%;
+    height: 100%;
+    
 }

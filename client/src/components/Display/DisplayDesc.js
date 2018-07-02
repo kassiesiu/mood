@@ -6,7 +6,8 @@ import './Display.css';
 class DisplayDesc extends Component {
 
     state = {
-        desc: this.props.item.desc
+        desc: this.props.item.desc,
+        title: this.props.item.title
     }
 
     handleInputChange = (e) => {
@@ -19,13 +20,15 @@ class DisplayDesc extends Component {
 
     handleSave = () => {
         axios.put('/api/links/' + this.props.item._id, {
-            desc: this.state.desc
+            desc: this.state.desc,
+            title: this.state.title
         }).then (res => {
             console.log("DisplayDesc.js Success");
         }).catch (err => {
             console.log("DisplayDesc.js Error");
         })
-        this.props.item.desc = this.state.desc; // update 
+        this.props.item.desc = this.state.desc; // update description on the description page
+        this.props.item.title = this.state.title;
         this.props.cancel();
     }
     
@@ -34,6 +37,12 @@ class DisplayDesc extends Component {
         return (
             <Form>
                 <Form.Field>
+                    <Form.Input
+                    label = 'Title'
+                    name = "title"
+                    onChange = {this.handleInputChange}
+                    value = {this.state.title}
+                    />
                     <Form.TextArea
                     label = 'Description'
                     name = "desc"
@@ -42,8 +51,8 @@ class DisplayDesc extends Component {
                     autoHeight
                     />
                 </Form.Field>
-                    <Button basic floated = "right" onClick = {this.props.cancel}>Cancel</Button>
                     <Button basic floated = "right" onClick = {this.handleSave}>Save</Button>
+                    <Button basic floated = "right" onClick = {this.props.cancel}>Cancel</Button>
             </Form>
         );
     }

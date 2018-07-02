@@ -11,17 +11,17 @@ class CreateModal extends Component {
                 trigger={
 
                     this.props.card ?
-                    <Card>
+                    <Card className = "cardContainer">
                         <Icon name = "plus" className = "addNewIcon" size = "large"/>
                         <Card.Content>
                             <Card.Header>
-                                Add
+                                Add New Link
                             </Card.Header>
                         </Card.Content>
                     </Card>
                     :
                     <Menu.Item
-                    name = 'new'
+                    name = 'Add New Link'
                     />
 
 

@@ -22,7 +22,7 @@ class Display extends Component {
 
         return (
 
-            <Card.Group itemsPerRow = {4} className = "grid">
+            <Card.Group itemsPerRow = {4} className = "gridMargin">
 
             {this.state.items.map(item =>
                 this.props.showBoard ? <DisplayCard {...this.props} item = { item } key = {item._id} /> : <DisplayModal {...this.props} item = {item} key = {item._id}  />       
